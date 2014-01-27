@@ -34,7 +34,7 @@ class SeemeGateway extends AbstractGateway
     public function send(Message $message)
     {
         $params = array(
-            'message' => (string)$message,
+            'message' => (string) $message,
             'number' => $message->getNumber(),
         );
 

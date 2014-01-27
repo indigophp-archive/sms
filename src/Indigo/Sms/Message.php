@@ -60,7 +60,7 @@ class Message implements \Serializable
     /**
      * Set sender
      *
-     * @param  mixed $sender
+     * @param  mixed   $sender
      * @return Message
      */
     public function setSender($sender)
@@ -83,7 +83,7 @@ class Message implements \Serializable
     /**
      * Set number
      *
-     * @param  mixed $number
+     * @param  mixed   $number
      * @return Message
      */
     public function setNumber($number)
@@ -106,7 +106,7 @@ class Message implements \Serializable
     /**
      * Set message
      *
-     * @param  string $message
+     * @param  string  $message
      * @return Message
      */
     public function setMessage($message)
