@@ -20,7 +20,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider provider
      */
-    public function testMessage($sender, $number, $message)
+    public function testMessage($number, $message, $sender)
     {
         $msg = new Message($number, $message, $sender);
 

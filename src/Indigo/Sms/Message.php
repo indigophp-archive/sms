@@ -19,13 +19,6 @@ namespace Indigo\Sms;
 class Message implements \Serializable
 {
     /**
-     * Sender name, id, etc
-     *
-     * @var mixed
-     */
-    protected $sender;
-
-    /**
      * Phone number
      * Format depends on the gateway
      *
@@ -40,34 +33,18 @@ class Message implements \Serializable
      */
     protected $message;
 
+    /**
+     * Sender name, id, etc
+     *
+     * @var mixed
+     */
+    protected $sender;
+
     public function __construct($number, $message, $sender = null)
     {
         $this->number = $number;
         $this->message = $message;
         $this->sender = $sender;
-    }
-
-    /**
-     * Get sender
-     *
-     * @return mixed
-     */
-    public function getSender()
-    {
-        return $this->sender;
-    }
-
-    /**
-     * Set sender
-     *
-     * @param  mixed   $sender
-     * @return Message
-     */
-    public function setSender($sender)
-    {
-        $this->sender = $sender;
-
-        return $this;
     }
 
     /**
@@ -112,6 +89,29 @@ class Message implements \Serializable
     public function setMessage($message)
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get sender
+     *
+     * @return mixed
+     */
+    public function getSender()
+    {
+        return $this->sender;
+    }
+
+    /**
+     * Set sender
+     *
+     * @param  mixed   $sender
+     * @return Message
+     */
+    public function setSender($sender)
+    {
+        $this->sender = $sender;
 
         return $this;
     }
