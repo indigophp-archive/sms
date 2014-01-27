@@ -11,12 +11,19 @@
         }
     ],
     "require": {
-        "guzzle/guzzle": "dev-master"
+        "guzzle/guzzle": "v3.8.0"
     },
     "require-dev": {
-        "mockery/mockery": "dev-master@dev"
+        "mockery/mockery": "dev-master@dev",
+        "monolog/monolog": "dev-master"
+    },
+    "suggest": {
+        "monolog/monolog": "Send logs as SMS messages"
     },
     "autoload": {
-        "psr-0": {"Indigo\\Sms\\": ["src/", "tests/"]}
+        "psr-0": {
+            "Indigo\\Sms\\": ["src/", "tests/"],
+            "Monolog\\": "src/"
+        }
     }
 }
