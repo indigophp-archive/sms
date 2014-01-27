@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "guzzle/http": "dev-master"
+        "guzzle/guzzle": "dev-master"
     },
     "require-dev": {
         "mockery/mockery": "dev-master@dev"
