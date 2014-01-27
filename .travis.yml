@@ -1,0 +1,18 @@
+language: php
+php:
+  - 5.5
+  - 5.4
+  - 5.3
+
+script: phpunit -v --coverage-clover=coverage.clover
+
+before_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - composer install --dev --prefer-source
+
+after_script:
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
+notifications:
+    webhooks:
+        secure: "WAiPtlSj+7PU4w26TvOstBJyHrAJ30B/bZxvW/LD0e3iaEzdS6GJNReH/o+zZrUJgnHB4bu+Kn/rEMlCFUPAGPLDK7uU1HCHe7LDPzPJdWwo8gFZoy0wu1ZPuKzApZddb7Z4Nhzgsax3YwtRK5pkqX5FOl1WOPw3hFSslZrr0mc="

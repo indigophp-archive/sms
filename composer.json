@@ -1,0 +1,22 @@
+{
+    "name": "indigophp/sms",
+    "description": "SMS abstraction layer",
+    "homepage": "http://indigophp.com",
+    "keywords": ["sms", "short-message", "gateway"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Márk Sági-Kazár",
+            "email": "mark.sagikazar@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzle/http": "dev-master"
+    },
+    "require-dev": {
+        "mockery/mockery": "dev-master@dev"
+    },
+    "autoload": {
+        "psr-0": {"Indigo\\Sms\\": ["src/", "tests/"]}
+    }
+}
