@@ -116,6 +116,11 @@ class Message implements \Serializable
         return $this;
     }
 
+    public function asArray()
+    {
+        return get_object_vars($this);
+    }
+
     public function __tostring()
     {
         return $this->getMessage();
@@ -123,9 +128,7 @@ class Message implements \Serializable
 
     public function serialize()
     {
-        $vars = get_object_vars($this);
-
-        return json_encode($vars);
+        return json_encode($this->asArray());
     }
 
     public function unserialize($data)

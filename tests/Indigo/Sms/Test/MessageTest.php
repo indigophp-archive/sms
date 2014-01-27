@@ -36,5 +36,10 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($message, (string)$msg);
 
         $this->assertEquals($msg, unserialize(serialize($msg)));
+
+        $this->assertEquals(
+            compact('number', 'message', 'sender'),
+            $msg->asArray()
+        );
     }
 }
