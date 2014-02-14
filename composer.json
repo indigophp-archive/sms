@@ -1,7 +1,7 @@
 {
     "name": "indigophp/sms",
     "description": "SMS abstraction layer",
-    "homepage": "http://indigophp.com",
+    "homepage": "https://indigophp.com",
     "keywords": ["sms", "short-message", "gateway"],
     "license": "MIT",
     "authors": [
@@ -22,8 +22,10 @@
     },
     "autoload": {
         "psr-0": {
-            "Indigo\\Sms\\": ["src/", "tests/"],
-            "Monolog\\": "src/"
+            "Monolog\\": "lib/"
+        },
+        "psr-4": {
+            "Indigo\\Sms\\": ["src/", "tests/"]
         }
     }
 }

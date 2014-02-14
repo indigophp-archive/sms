@@ -3,7 +3,7 @@
 /*
  * This file is part of the Indigo SMS package.
  *
- * (c) IndigoPHP Development Team
+ * (c) Indigo Development Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -38,7 +38,7 @@ class SmsHandler extends AbstractProcessingHandler
     protected function write(array $record)
     {
         $message = new Message($this->number, $record['formatted']);
-        $this->sender and $message->setSender($this->sender);
+        $message->setSender($this->sender);
 
         $this->gateway->send($message);
     }

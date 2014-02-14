@@ -3,7 +3,7 @@
 /*
  * This file is part of the Indigo SMS package.
  *
- * (c) IndigoPHP Development Team
+ * (c) Indigo Development Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,12 +11,14 @@
 
 namespace Indigo\Sms;
 
+use Serializable;
+
 /**
  * Message
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Message implements \Serializable
+class Message implements Serializable
 {
     /**
      * Phone number
