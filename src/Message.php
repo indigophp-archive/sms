@@ -11,12 +11,14 @@
 
 namespace Indigo\Sms;
 
+use Serializable;
+
 /**
  * Message
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Message implements \Serializable
+class Message implements Serializable
 {
     /**
      * Phone number

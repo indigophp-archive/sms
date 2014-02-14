@@ -11,11 +11,13 @@
 
 namespace Indigo\Sms\Exception;
 
+use Exception;
+
 /**
  * Thrown in case of fault response
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class ResponseException extends \Exception
+class ResponseException extends Exception
 {
 }
