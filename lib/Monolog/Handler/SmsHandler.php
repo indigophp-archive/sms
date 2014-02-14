@@ -38,7 +38,7 @@ class SmsHandler extends AbstractProcessingHandler
     protected function write(array $record)
     {
         $message = new Message($this->number, $record['formatted']);
-        $this->sender and $message->setSender($this->sender);
+        $message->setSender($this->sender);
 
         $this->gateway->send($message);
     }
