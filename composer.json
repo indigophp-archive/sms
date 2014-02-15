@@ -1,9 +1,9 @@
 {
     "name": "indigophp/sms",
     "description": "SMS abstraction layer",
+    "license": "MIT",
     "homepage": "https://indigophp.com",
     "keywords": ["sms", "short-message", "gateway"],
-    "license": "MIT",
     "authors": [
         {
             "name": "Márk Sági-Kazár",
