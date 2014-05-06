@@ -7,7 +7,9 @@ use Indigo\Sms\Gateway\SeemeGateway;
 use Guzzle\Http\Client;
 use Guzzle\Http\Message\Response;
 
-
+/**
+ * @coversDefaultClass \Indigo\Sms\Gateway\SeemeGateway
+ */
 class SeemeGatewayTest extends AbstractGatewayTest
 {
     public function setUp()
@@ -33,6 +35,10 @@ class SeemeGatewayTest extends AbstractGatewayTest
         $this->gateway = new SeemeGateway($client, 'email@email.com', 'your_password');
     }
 
+    /**
+     * @covers ::getBalance
+     * @group  Sms
+     */
     public function testBalance()
     {
         $balance = $this->gateway->getBalance();
@@ -41,6 +47,9 @@ class SeemeGatewayTest extends AbstractGatewayTest
         $this->assertEquals(10000.000, $balance);
     }
 
+    /**
+     * @group  Sms
+     */
     public function testMessage()
     {
         $message = new Message(123456789, 'This is a test message');
@@ -50,6 +59,10 @@ class SeemeGatewayTest extends AbstractGatewayTest
         $this->assertTrue($result);
     }
 
+    /**
+     * @covers ::setIp
+     * @group  Sms
+     */
     public function testSetip()
     {
         $result = $this->gateway->setIP('127.0.0.1');
@@ -58,9 +71,10 @@ class SeemeGatewayTest extends AbstractGatewayTest
     }
 
     /**
-     * @expectedException Indigo\Sms\Exception\ResponseException
+     * @expectedException        \Indigo\Sms\Exception\ResponseException
      * @expectedExceptionMessage Your email or password is wrong
-     * @expectedExceptionCode 4
+     * @expectedExceptionCode    4
+     * @group                    Sms
      */
     public function testFaultyResponse()
     {

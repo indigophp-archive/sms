@@ -4,6 +4,9 @@ namespace Indigo\Sms\Test;
 
 use Indigo\Sms\Message;
 
+/**
+ * @coversDefaultClass \Indigo\Sms\Message
+ */
 class MessageTest extends \PHPUnit_Framework_TestCase
 {
     public function provider()
@@ -19,6 +22,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider provider
+     * @group        Sms
      */
     public function testMessage($number, $message, $sender)
     {

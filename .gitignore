@@ -1,3 +1,4 @@
+phpunit.xml
 /vendor/
 composer.lock
-phpunit.xml
+/coverage

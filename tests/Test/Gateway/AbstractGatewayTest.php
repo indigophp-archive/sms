@@ -14,6 +14,11 @@ abstract class AbstractGatewayTest extends \PHPUnit_Framework_TestCase
         \Mockery::close();
     }
 
+    /**
+     * @covers ::getClient
+     * @covers ::setClient
+     * @group  Sms
+     */
     public function testClient()
     {
         $client = $this->gateway->getClient();
