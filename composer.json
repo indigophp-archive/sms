@@ -25,7 +25,12 @@
             "Monolog\\": "lib/"
         },
         "psr-4": {
-            "Indigo\\Sms\\": ["src/", "tests/"]
+            "Indigo\\Sms\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Indigo\\Sms\\Test\\": "tests/"
         }
     }
 }

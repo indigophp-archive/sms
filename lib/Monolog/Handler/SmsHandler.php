@@ -15,6 +15,11 @@ use Indigo\Sms\Gateway\GatewayInterface;
 use Indigo\Sms\Message;
 use Monolog\Logger;
 
+/**
+ * Monolog SMS Handler
+ *
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ */
 class SmsHandler extends AbstractProcessingHandler
 {
     protected $gateway;
@@ -35,6 +40,9 @@ class SmsHandler extends AbstractProcessingHandler
         $this->sender = $sender;
     }
 
+    /**
+     * {@inheritdocs}
+     */
     protected function write(array $record)
     {
         $message = new Message($this->number, $record['formatted']);
