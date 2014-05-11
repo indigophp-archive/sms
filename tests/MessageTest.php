@@ -5,7 +5,11 @@ namespace Indigo\Sms\Test;
 use Indigo\Sms\Message;
 
 /**
- * @coversDefaultClass \Indigo\Sms\Message
+ * Tests for Message
+ *
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ *
+ * @coversDefaultClass Indigo\Sms\Message
  */
 class MessageTest extends \PHPUnit_Framework_TestCase
 {

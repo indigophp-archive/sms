@@ -8,7 +8,11 @@ use Guzzle\Http\Client;
 use Guzzle\Http\Message\Response;
 
 /**
- * @coversDefaultClass \Indigo\Sms\Gateway\SeemeGateway
+ * Tests for Seeme Gateway
+ *
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ *
+ * @coversDefaultClass Indigo\Sms\Gateway\SeemeGateway
  */
 class SeemeGatewayTest extends AbstractGatewayTest
 {
@@ -71,7 +75,7 @@ class SeemeGatewayTest extends AbstractGatewayTest
     }
 
     /**
-     * @expectedException        \Indigo\Sms\Exception\ResponseException
+     * @expectedException        Indigo\Sms\Exception\ResponseException
      * @expectedExceptionMessage Your email or password is wrong
      * @expectedExceptionCode    4
      * @group                    Sms
