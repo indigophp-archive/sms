@@ -42,6 +42,9 @@ class Message implements Serializable
      */
     protected $sender;
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct($number, $message, $sender = null)
     {
         $this->number = $number;
@@ -118,21 +121,37 @@ class Message implements Serializable
         return $this;
     }
 
+    /**
+     * Return object vars as array
+     *
+     * @return array
+     */
     public function asArray()
     {
         return get_object_vars($this);
     }
 
+    /**
+     * Return message
+     *
+     * @return string
+     */
     public function __tostring()
     {
         return $this->getMessage();
     }
 
+    /**
+     * {@inheritdocs}
+     */
     public function serialize()
     {
         return json_encode($this->asArray());
     }
 
+    /**
+     * {@inheritdocs}
+     */
     public function unserialize($data)
     {
         $vars = json_decode($data, true);

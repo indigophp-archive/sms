@@ -34,14 +34,17 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($number, $msg->getNumber());
         $this->assertInstanceOf('Indigo\\Sms\\Message', $msg->setNumber($number));
+        $this->assertEquals($number, $msg->getNumber());
 
         $this->assertEquals($message, $msg->getMessage());
         $this->assertInstanceOf('Indigo\\Sms\\Message', $msg->setMessage($message));
+        $this->assertEquals($message, $msg->getMessage());
 
         $this->assertEquals($sender, $msg->getSender());
         $this->assertInstanceOf('Indigo\\Sms\\Message', $msg->setSender($sender));
+        $this->assertEquals($sender, $msg->getSender());
 
-        $this->assertEquals($message, (string)$msg);
+        $this->assertEquals($message, (string) $msg);
 
         $this->assertEquals($msg, unserialize(serialize($msg)));
 

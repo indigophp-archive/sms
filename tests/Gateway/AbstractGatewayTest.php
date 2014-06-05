@@ -2,9 +2,6 @@
 
 namespace Indigo\Sms\Test\Gateway;
 
-use Indigo\Sms\Message;
-use Indigo\Sms\Gateway\GatewayInterface;
-
 abstract class AbstractGatewayTest extends \PHPUnit_Framework_TestCase
 {
     protected $gateway;
