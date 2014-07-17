@@ -21,17 +21,18 @@ use Indigo\Sms\Message;
 interface GatewayInterface
 {
     /**
-     * Send a message
+     * Sends a message
      *
-     * @param  Message $message
+     * @param Message $message
+     *
      * @return boolean True on success
      */
     public function send(Message $message);
 
     /**
-     * Return balance
+     * Returns the balance
      *
-     * @return float
+     * @return float|null Must return null if not available
      */
     public function getBalance();
 }
