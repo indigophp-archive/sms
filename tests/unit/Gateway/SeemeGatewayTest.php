@@ -2,6 +2,7 @@
 
 namespace Indigo\Sms\Test\Gateway;
 
+use Indigo\Sms\Message;
 use Indigo\Sms\Gateway\SeemeGateway;
 use GuzzleHttp\Message\Response;
 use GuzzleHttp\Stream;
@@ -52,13 +53,7 @@ class SeemeGatewayTest extends AbstractGatewayTest
      */
     public function testMessage()
     {
-        $message = \Mockery::mock('Indigo\\Sms\\Message');
-
-        $message->shouldReceive('getData')
-            ->andReturn(array(
-                'number'  => 123456789,
-                'message' => 'This is a test message',
-            ));
+        $message = new Message(123456789, 'This is a test message');
 
         $result = $this->gateway->send($message);
 
