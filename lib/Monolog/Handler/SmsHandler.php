@@ -19,6 +19,8 @@ use Monolog\Logger;
  * Monolog SMS Handler
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ *
+ * @codeCoverageIgnore
  */
 class SmsHandler extends AbstractProcessingHandler
 {

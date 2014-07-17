@@ -11,14 +11,16 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "guzzle/guzzle": "~3.8.0"
+        "php": ">=5.3.3"
     },
     "require-dev": {
-        "mockery/mockery": "dev-master@dev",
+        "codeception/codeception": "~2.0.0",
+        "codeception/mockery-module": "dev-master",
+        "guzzlehttp/guzzle": "~4.1.0",
         "monolog/monolog": "dev-master"
     },
     "suggest": {
+        "guzzlehttp/guzzle": "Used by some gateways",
         "monolog/monolog": "Send logs as SMS messages"
     },
     "autoload": {
@@ -27,11 +29,6 @@
         },
         "psr-4": {
             "Indigo\\Sms\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Indigo\\Sms\\Test\\": "tests/"
         }
     }
 }

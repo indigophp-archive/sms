@@ -4,11 +4,11 @@ php:
   - 5.4
   - 5.5
 
-script: phpunit -v --coverage-clover=coverage.clover
+script: vendor/bin/codecept run --coverage-xml
 
 before_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - composer install --dev --prefer-source
 
 after_script:
-  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  - php ocular.phar code-coverage:upload --format=php-clover tests/_output/coverage.xml

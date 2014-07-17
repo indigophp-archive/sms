@@ -40,7 +40,7 @@ $gateway->send($message);
 ## Testing
 
 ``` bash
-$ phpunit
+$ codecept run
 ```
 
 

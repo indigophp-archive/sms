@@ -3,6 +3,7 @@
 namespace Indigo\Sms\Test;
 
 use Indigo\Sms\Message;
+use Codeception\TestCase\Test;
 
 /**
  * Tests for Message
@@ -11,7 +12,7 @@ use Indigo\Sms\Message;
  *
  * @coversDefaultClass Indigo\Sms\Message
  */
-class MessageTest extends \PHPUnit_Framework_TestCase
+class MessageTest extends Test
 {
     public function provider()
     {
@@ -50,7 +51,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             compact('number', 'message', 'sender'),
-            $msg->asArray()
+            $msg->getData()
         );
     }
 }
