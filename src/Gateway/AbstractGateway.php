@@ -11,7 +11,7 @@
 
 namespace Indigo\Sms\Gateway;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 
 abstract class AbstractGateway implements GatewayInterface
 {
@@ -23,7 +23,7 @@ abstract class AbstractGateway implements GatewayInterface
     protected $client;
 
     /**
-     * Get HTTP client
+     * Returns the HTTP client
      *
      * @return Client
      */
@@ -33,9 +33,11 @@ abstract class AbstractGateway implements GatewayInterface
     }
 
     /**
-     * Set HTTP client
+     * Sets the HTTP client
      *
      * @param Client $client
+     *
+     * @return this
      */
     public function setClient(Client $client)
     {

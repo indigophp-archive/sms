@@ -13,15 +13,40 @@ namespace Indigo\Sms\Gateway;
 
 use Indigo\Sms\Exception\ResponseException;
 use Indigo\Sms\Message;
-use Guzzle\Http\Client;
-use Guzzle\Http\Message\Response;
+use GuzzleHttp\Client;
+use GuzzleHttp\Message\Response;
 
 class SeemeGateway extends AbstractGateway
 {
+    /**
+     * Email address
+     *
+     * @var string
+     */
     protected $email;
+
+    /**
+     * Password
+     *
+     * @var string
+     */
     protected $password;
+
+    /**
+     * Callback options
+     *
+     * @var array
+     */
     protected $callback = array();
 
+    /**
+     * Creates new SeemeeGateway
+     *
+     * @param Client $client
+     * @param string $email
+     * @param string $password
+     * @param array  $callback
+     */
     public function __construct(Client $client, $email, $password, $callback = array())
     {
         $this->email = $email;
@@ -31,9 +56,27 @@ class SeemeGateway extends AbstractGateway
         $this->setClient($client);
     }
 
+    /**
+     * {@inheritdocs}
+     */
+    public function setClient(Client $client)
+    {
+        $client->setDefaultOption('query', array(
+            'email'      => $this->email,
+            'password'   => $this->password,
+            'format'     => 'json',
+            'apiVersion' => '1.0.0',
+        ));
+
+        return parent::setClient($client);
+    }
+
+    /**
+     * {@inheritdocs}
+     */
     public function send(Message $message)
     {
-        $params = $message->asArray();
+        $params = $message->getData();
 
         $params = array_filter($params);
 
@@ -42,22 +85,38 @@ class SeemeGateway extends AbstractGateway
         return $result['result'] == 'OK';
     }
 
+    /**
+     * {@inheritdocs}
+     */
     public function getBalance()
     {
         $params = array(
             'method' => 'balance',
         );
 
+        $balance = null;
+
         $result = $this->call($params);
 
-        return (float) $result['balance'];
+        if (isset($result['balance'])) {
+            $balance = (float) $result['balance'];
+        }
+
+        return $balance;
     }
 
-    public function setIP($ip)
+    /**
+     * Sets the sending IP address
+     *
+     * @param string $ip
+     *
+     * @return boolean
+     */
+    public function setIp($ip)
     {
         $params = array(
             'method' => 'setip',
-            'ip' => $ip,
+            'ip'     => $ip,
         );
 
         $result = $this->call($params);
@@ -65,17 +124,19 @@ class SeemeGateway extends AbstractGateway
         return $result['result'] == 'OK';
     }
 
+    /**
+     * Sends a request to server
+     *
+     * @param array $params Query parameters
+     *
+     * @return mixed
+     *
+     * @codeCoverageIgnore
+     */
     protected function call(array $params)
     {
-        $request = $this->client->get('', array(), array('query' => $params));
+        $response = $this->client->get(null, array('query' => $params));
 
-        $response = $request->send();
-
-        return $this->parseResponse($response);
-    }
-
-    protected function parseResponse(Response $response)
-    {
         $result = $response->json();
 
         if ($result['result'] == 'ERR') {
@@ -83,17 +144,5 @@ class SeemeGateway extends AbstractGateway
         }
 
         return $result;
-    }
-
-    public function setClient(Client $client)
-    {
-        $client->setDefaultOption('query', array(
-            'email' => $this->email,
-            'password' => $this->password,
-            'format' => 'json',
-            'apiVersion' => '1.0.0',
-        ));
-
-        return parent::setClient($client);
     }
 }

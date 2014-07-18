@@ -1,9 +1,9 @@
 {
     "name": "indigophp/sms",
     "description": "SMS abstraction layer",
+    "license": "MIT",
     "homepage": "https://indigophp.com",
     "keywords": ["sms", "short-message", "gateway"],
-    "license": "MIT",
     "authors": [
         {
             "name": "Márk Sági-Kazár",
@@ -11,13 +11,16 @@
         }
     ],
     "require": {
-        "guzzle/guzzle": "v3.8.0"
+        "php": ">=5.3.3"
     },
     "require-dev": {
-        "mockery/mockery": "dev-master@dev",
+        "codeception/codeception": "~2.0.0",
+        "codeception/mockery-module": "dev-master",
+        "guzzlehttp/guzzle": "~4.1.0",
         "monolog/monolog": "dev-master"
     },
     "suggest": {
+        "guzzlehttp/guzzle": "Used by some gateways",
         "monolog/monolog": "Send logs as SMS messages"
     },
     "autoload": {
@@ -25,7 +28,9 @@
             "Monolog\\": "lib/"
         },
         "psr-4": {
-            "Indigo\\Sms\\": ["src/", "tests/"]
+            "Indigo\\Sms\\": "src/"
         }
-    }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }

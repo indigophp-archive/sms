@@ -14,7 +14,7 @@ namespace Indigo\Sms;
 use Serializable;
 
 /**
- * Message
+ * Message class
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
@@ -42,6 +42,13 @@ class Message implements Serializable
      */
     protected $sender;
 
+    /**
+     * Creates new Message
+     *
+     * @param mixed  $number
+     * @param string $message
+     * @param mixed  $sender
+     */
     public function __construct($number, $message, $sender = null)
     {
         $this->number = $number;
@@ -50,7 +57,7 @@ class Message implements Serializable
     }
 
     /**
-     * Get number
+     * Returns the number
      *
      * @return mixed
      */
@@ -60,10 +67,11 @@ class Message implements Serializable
     }
 
     /**
-     * Set number
+     * Sets the number
      *
-     * @param  mixed   $number
-     * @return Message
+     * @param mixed $number
+     *
+     * @return this
      */
     public function setNumber($number)
     {
@@ -73,7 +81,7 @@ class Message implements Serializable
     }
 
     /**
-     * Get message
+     * Returns the message
      *
      * @return string
      */
@@ -83,10 +91,11 @@ class Message implements Serializable
     }
 
     /**
-     * Set message
+     * Sets the message
      *
-     * @param  string  $message
-     * @return Message
+     * @param string $message
+     *
+     * @return this
      */
     public function setMessage($message)
     {
@@ -96,7 +105,7 @@ class Message implements Serializable
     }
 
     /**
-     * Get sender
+     * Returns the sender
      *
      * @return mixed
      */
@@ -106,10 +115,11 @@ class Message implements Serializable
     }
 
     /**
-     * Set sender
+     * Sets the sender
      *
-     * @param  mixed   $sender
-     * @return Message
+     * @param mixed $sender
+     *
+     * @return this
      */
     public function setSender($sender)
     {
@@ -118,27 +128,57 @@ class Message implements Serializable
         return $this;
     }
 
-    public function asArray()
+    /**
+     * Returns object vars as array
+     *
+     * @return array
+     */
+    public function getData()
     {
         return get_object_vars($this);
     }
 
-    public function __tostring()
+    /**
+     * Sets object vars from array
+     *
+     * @param array $data
+     *
+     * @return this
+     */
+    public function setData(array $data)
+    {
+        foreach ($data as $key => $value) {
+            $this->{$key} = $value;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Alias to getMessage()
+     *
+     * @return string
+     */
+    public function __toString()
     {
         return $this->getMessage();
     }
 
+    /**
+     * {@inheritdocs}
+     */
     public function serialize()
     {
-        return json_encode($this->asArray());
+        return json_encode($this->getData());
     }
 
+    /**
+     * {@inheritdocs}
+     */
     public function unserialize($data)
     {
-        $vars = json_decode($data, true);
+        $data = json_decode($data, true);
 
-        foreach ($vars as $key => $value) {
-            $this->{$key} = $value;
-        }
+        $this->setData($data);
     }
 }
