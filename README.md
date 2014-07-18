@@ -6,6 +6,7 @@
 [![Total Downloads](https://poser.pugx.org/indigophp/sms/downloads.png)](https://packagist.org/packages/indigophp/sms)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/indigophp/sms/badges/quality-score.png?s=a6bcf87f48200f7997cd159cdef527d1b2bbcfb8)](https://scrutinizer-ci.com/g/indigophp/sms/)
 [![License](https://poser.pugx.org/indigophp/sms/license.png)](https://packagist.org/packages/indigophp/sms)
+[![Dependency Status](http://www.versioneye.com/user/projects/53c8e3beb47c315d0f000039/badge.svg?style=flat)](http://www.versioneye.com/user/projects/53c8e3beb47c315d0f000039)
 
 
 **SMS Gateway Abstraction Layer.**
