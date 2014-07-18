@@ -30,5 +30,7 @@
         "psr-4": {
             "Indigo\\Sms\\": "src/"
         }
-    }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }
