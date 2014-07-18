@@ -165,7 +165,7 @@ class Message implements Serializable
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function serialize()
     {
@@ -173,7 +173,7 @@ class Message implements Serializable
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function unserialize($data)
     {

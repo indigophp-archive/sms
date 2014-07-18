@@ -43,7 +43,7 @@ class SmsHandler extends AbstractProcessingHandler
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     protected function write(array $record)
     {

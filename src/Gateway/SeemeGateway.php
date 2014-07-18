@@ -57,7 +57,7 @@ class SeemeGateway extends AbstractGateway
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function setClient(Client $client)
     {
@@ -72,7 +72,7 @@ class SeemeGateway extends AbstractGateway
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function send(Message $message)
     {
@@ -86,7 +86,7 @@ class SeemeGateway extends AbstractGateway
     }
 
     /**
-     * {@inheritdocs}
+     * {@inheritdoc}
      */
     public function getBalance()
     {
