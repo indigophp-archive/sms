@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Indigo SMS package.
+ *
+ * (c) Indigo Development Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Indigo\Sms\Test;
 
 use Indigo\Sms\Message;
@@ -11,6 +20,7 @@ use Codeception\TestCase\Test;
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
  * @coversDefaultClass Indigo\Sms\Message
+ * @group              Sms
  */
 class MessageTest extends Test
 {
@@ -27,7 +37,6 @@ class MessageTest extends Test
 
     /**
      * @dataProvider provider
-     * @group        Sms
      */
     public function testMessage($number, $message, $sender)
     {

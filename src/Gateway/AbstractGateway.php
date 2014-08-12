@@ -13,6 +13,11 @@ namespace Indigo\Sms\Gateway;
 
 use GuzzleHttp\Client;
 
+/**
+ * Abstract Gateway
+ *
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ */
 abstract class AbstractGateway implements GatewayInterface
 {
     /**

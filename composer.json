@@ -17,7 +17,7 @@
         "codeception/codeception": "~2.0.0",
         "codeception/mockery-module": "dev-master",
         "guzzlehttp/guzzle": "~4.1.0",
-        "monolog/monolog": "dev-master"
+        "monolog/monolog": "~1.10.0"
     },
     "suggest": {
         "guzzlehttp/guzzle": "Used by some gateways",

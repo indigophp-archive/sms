@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Indigo SMS package.
+ *
+ * (c) Indigo Development Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Indigo\Sms\Test\Gateway;
 
 use Indigo\Sms\Message;
@@ -13,6 +22,8 @@ use GuzzleHttp\Stream;
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  *
  * @coversDefaultClass Indigo\Sms\Gateway\SeemeGateway
+ * @group              Sms
+ * @group              Gateway
  */
 class SeemeGatewayTest extends AbstractGatewayTest
 {
@@ -37,7 +48,6 @@ class SeemeGatewayTest extends AbstractGatewayTest
 
     /**
      * @covers ::getBalance
-     * @group  Sms
      */
     public function testBalance()
     {
@@ -49,7 +59,6 @@ class SeemeGatewayTest extends AbstractGatewayTest
 
     /**
      * @covers ::send
-     * @group  Sms
      */
     public function testMessage()
     {
@@ -62,7 +71,6 @@ class SeemeGatewayTest extends AbstractGatewayTest
 
     /**
      * @covers ::setIp
-     * @group  Sms
      */
     public function testSetIp()
     {
@@ -75,7 +83,6 @@ class SeemeGatewayTest extends AbstractGatewayTest
      * @expectedException        Indigo\Sms\Exception\ResponseException
      * @expectedExceptionMessage Your email or password is wrong
      * @expectedExceptionCode    4
-     * @group                    Sms
      */
     public function testFaultyResponse()
     {

@@ -14,7 +14,7 @@ namespace Indigo\Sms;
 use Serializable;
 
 /**
- * Message class
+ * Message
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
@@ -22,6 +22,7 @@ class Message implements Serializable
 {
     /**
      * Phone number
+     *
      * Format depends on the gateway
      *
      * @var mixed

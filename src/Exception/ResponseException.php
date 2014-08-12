@@ -11,13 +11,11 @@
 
 namespace Indigo\Sms\Exception;
 
-use UnexpectedValueException;
-
 /**
  * Thrown in case of faulty response
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class ResponseException extends UnexpectedValueException
+class ResponseException extends \UnexpectedValueException
 {
 }

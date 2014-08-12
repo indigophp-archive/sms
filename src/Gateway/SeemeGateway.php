@@ -16,6 +16,11 @@ use Indigo\Sms\Message;
 use GuzzleHttp\Client;
 use GuzzleHttp\Message\Response;
 
+/**
+ * Seeme Gateway
+ *
+ * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
+ */
 class SeemeGateway extends AbstractGateway
 {
     /**

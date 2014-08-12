@@ -24,10 +24,36 @@ use Monolog\Logger;
  */
 class SmsHandler extends AbstractProcessingHandler
 {
+    /**
+     * Gateway object
+     *
+     * @var GatewayInterface
+     */
     protected $gateway;
+
+    /**
+     * Number
+     *
+     * @var mixed
+     */
     protected $number;
+
+    /**
+     * Sender
+     *
+     * @var mixed
+     */
     protected $sender;
 
+    /**
+     * Creates a new SmsHandler
+     *
+     * @param GatewayInterface $gateway
+     * @param mixed            $number
+     * @param mixed            $sender
+     * @param integer          $level
+     * @param boolean          $bubble
+     */
     public function __construct(
         GatewayInterface $gateway,
         $number,
