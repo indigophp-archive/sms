@@ -11,14 +11,12 @@
 
 namespace Indigo\Sms;
 
-use Serializable;
-
 /**
  * Message
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class Message implements Serializable
+class Message
 {
     /**
      * Phone number
@@ -71,14 +69,10 @@ class Message implements Serializable
      * Sets the number
      *
      * @param mixed $number
-     *
-     * @return this
      */
     public function setNumber($number)
     {
         $this->number = $number;
-
-        return $this;
     }
 
     /**
@@ -95,14 +89,10 @@ class Message implements Serializable
      * Sets the message
      *
      * @param string $message
-     *
-     * @return this
      */
     public function setMessage($message)
     {
         $this->message = $message;
-
-        return $this;
     }
 
     /**
@@ -119,14 +109,10 @@ class Message implements Serializable
      * Sets the sender
      *
      * @param mixed $sender
-     *
-     * @return this
      */
     public function setSender($sender)
     {
         $this->sender = $sender;
-
-        return $this;
     }
 
     /**
@@ -143,43 +129,21 @@ class Message implements Serializable
      * Sets object vars from array
      *
      * @param array $data
-     *
-     * @return this
      */
     public function setData(array $data)
     {
         foreach ($data as $key => $value) {
             $this->{$key} = $value;
         }
-
-        return $this;
     }
 
     /**
-     * Alias to getMessage()
+     * Returns the message
      *
      * @return string
      */
     public function __toString()
     {
         return $this->getMessage();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function serialize()
-    {
-        return json_encode($this->getData());
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function unserialize($data)
-    {
-        $data = json_decode($data, true);
-
-        $this->setData($data);
     }
 }

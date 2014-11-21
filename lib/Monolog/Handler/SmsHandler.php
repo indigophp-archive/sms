@@ -11,7 +11,7 @@
 
 namespace Monolog\Handler;
 
-use Indigo\Sms\Gateway\GatewayInterface;
+use Indigo\Sms\Gateway;
 use Indigo\Sms\Message;
 use Monolog\Logger;
 
@@ -46,16 +46,14 @@ class SmsHandler extends AbstractProcessingHandler
     protected $sender;
 
     /**
-     * Creates a new SmsHandler
-     *
-     * @param GatewayInterface $gateway
-     * @param mixed            $number
-     * @param mixed            $sender
-     * @param integer          $level
-     * @param boolean          $bubble
+     * @param Gateway $gateway
+     * @param mixed   $number
+     * @param mixed   $sender
+     * @param integer $level
+     * @param boolean $bubble
      */
     public function __construct(
-        GatewayInterface $gateway,
+        Gateway $gateway,
         $number,
         $sender = null,
         $level = Logger::CRITICAL,

@@ -11,69 +11,70 @@
 
 namespace Indigo\Sms\Gateway;
 
-use Indigo\Sms\Exception\ResponseException;
+use Indigo\Sms\Gateway;
 use Indigo\Sms\Message;
-use GuzzleHttp\Client;
-use GuzzleHttp\Message\Response;
+use Indigo\Http\Client;
+use Indigo\Http\Message\Request;
+use Indigo\Sms\GatewayException;
+use League\Url\Url;
 
 /**
- * Seeme Gateway
+ * Seeme gateway
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-class SeemeGateway extends AbstractGateway
+class Seeme implements Gateway
 {
     /**
-     * Email address
+     * API Endpoint
+     */
+    const ENDPOINT = 'https://seeme.hu/gateway';
+
+    /**
+     * HTTP Client
      *
+     * @var Client
+     */
+    protected $client;
+
+    /**
      * @var string
      */
-    protected $email;
+    protected $apiKey;
 
     /**
-     * Password
-     *
-     * @var string
-     */
-    protected $password;
-
-    /**
-     * Callback options
-     *
-     * @var array
-     */
-    protected $callback = array();
-
-    /**
-     * Creates new SeemeeGateway
-     *
      * @param Client $client
-     * @param string $email
-     * @param string $password
-     * @param array  $callback
+     * @param string  $apiKey
      */
-    public function __construct(Client $client, $email, $password, $callback = array())
+    public function __construct(Client $client, $apiKey)
     {
-        $this->email = $email;
-        $this->password = $password;
-        $this->callback = $callback;
-
-        $this->setClient($client);
+        $this->client = $client;
+        $this->apiKey = $apiKey;
     }
 
     /**
-     * {@inheritdoc}
+     * Creates an URL
+     *
+     * @param array $queryParams
+     *
+     * @return string
      */
-    public function setClient(Client $client)
+    private function createUrl(array $params = [])
     {
-        $client->setDefaultOption('query', array(
-            'email'      => $this->email,
-            'password'   => $this->password,
-            'format'     => 'json',
-            'apiVersion' => '1.0.0',
-        ));
+        $url = Url::createFromUrl(self::ENDPOINT);
 
-        return parent::setClient($client);
+        $defaultParams = [
+            'key'        => $this->apiKey,
+            'format'     => 'json',
+            'apiVersion' => '2.0.1',
+        ];
+
+        $query = $url->getQuery();
+
+        $query->modify($params);
+        $query->modify($defaultParams);
+
+        return $url;
     }
 
     /**
@@ -82,8 +83,6 @@ class SeemeGateway extends AbstractGateway
     public function send(Message $message)
     {
         $params = $message->getData();
-
-        $params = array_filter($params);
 
         $result = $this->call($params);
 
@@ -95,9 +94,7 @@ class SeemeGateway extends AbstractGateway
      */
     public function getBalance()
     {
-        $params = array(
-            'method' => 'balance',
-        );
+        $params = ['method' => 'balance'];
 
         $balance = null;
 
@@ -119,10 +116,10 @@ class SeemeGateway extends AbstractGateway
      */
     public function setIp($ip)
     {
-        $params = array(
+        $params = [
             'method' => 'setip',
             'ip'     => $ip,
-        );
+        ];
 
         $result = $this->call($params);
 
@@ -135,17 +132,19 @@ class SeemeGateway extends AbstractGateway
      * @param array $params Query parameters
      *
      * @return mixed
-     *
-     * @codeCoverageIgnore
      */
-    protected function call(array $params)
+    private function call(array $params)
     {
-        $response = $this->client->get(null, array('query' => $params));
+        $params = array_filter($params);
 
-        $result = $response->json();
+        $url = $this->createUrl($params);
+
+        $response = $this->client->get((string) $url);
+
+        $result = json_decode($response, true);
 
         if ($result['result'] == 'ERR') {
-            throw new ResponseException($result['message'], $result['code']);
+            throw new GatewayException($result['message'], $result['code']);
         }
 
         return $result;

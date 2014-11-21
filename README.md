@@ -1,13 +1,12 @@
 # Indigo SMS
 
-[![Build Status](https://travis-ci.org/indigophp/sms.png?branch=develop)](https://travis-ci.org/indigophp/sms)
-[![Code Coverage](https://scrutinizer-ci.com/g/indigophp/sms/badges/coverage.png?s=0d5f65443b870a598e6e297a9cc0f92149061ace)](https://scrutinizer-ci.com/g/indigophp/sms/)
-[![Latest Stable Version](https://poser.pugx.org/indigophp/sms/v/stable.png)](https://packagist.org/packages/indigophp/sms)
-[![Total Downloads](https://poser.pugx.org/indigophp/sms/downloads.png)](https://packagist.org/packages/indigophp/sms)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/indigophp/sms/badges/quality-score.png?s=a6bcf87f48200f7997cd159cdef527d1b2bbcfb8)](https://scrutinizer-ci.com/g/indigophp/sms/)
-[![License](https://poser.pugx.org/indigophp/sms/license.png)](https://packagist.org/packages/indigophp/sms)
+[![Latest Version](https://img.shields.io/github/release/indigophp/sms.svg?style=flat-square)](https://github.com/indigophp/sms/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+[![Build Status](https://img.shields.io/travis/indigophp/sms/develop.svg?style=flat-square)](https://travis-ci.org/indigophp/sms)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/indigophp/sms.svg?style=flat-square)](https://scrutinizer-ci.com/g/indigophp/sms)
+[![Quality Score](https://img.shields.io/scrutinizer/g/indigophp/sms.svg?style=flat-square)](https://scrutinizer-ci.com/g/indigophp/sms)
+[![HHVM Status](https://img.shields.io/hhvm/indigophp/sms.svg?style=flat-square)](http://hhvm.h4cc.de/package/indigophp/sms)
 [![Dependency Status](http://www.versioneye.com/user/projects/53c8e3beb47c315d0f000039/badge.svg?style=flat)](http://www.versioneye.com/user/projects/53c8e3beb47c315d0f000039)
-
 
 **SMS Gateway Abstraction Layer.**
 
@@ -16,21 +15,20 @@
 
 Via Composer
 
-``` json
-{
-    "require": {
-        "indigophp/sms": "@stable"
-    }
-}
+``` bash
+$ composer require indigophp/sms
 ```
 
 
 ## Usage
 
 ``` php
-$gateway = new Indigo\Sms\Gateway\MyGateway;
+use Indigo\Sms\Message;
+use MyGateway;
 
-$message = new Indigo\Sms\Message(123456789, 'This is a message', OPTIONAL_SENDER_OR_SENDER_ID);
+$gateway = new MyGateway;
+
+$message = new Message(123456789, 'This is a message', OPTIONAL_SENDER_OR_SENDER_ID);
 
 $gateway->send($message);
 ```
@@ -39,13 +37,13 @@ $gateway->send($message);
 ## Testing
 
 ``` bash
-$ codecept run
+$ phpspec run
 ```
 
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/indigophp/sms/blob/develop/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 
 ## Credits
@@ -56,4 +54,4 @@ Please see [CONTRIBUTING](https://github.com/indigophp/sms/blob/develop/CONTRIBU
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/indigophp/sms/blob/develop/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.

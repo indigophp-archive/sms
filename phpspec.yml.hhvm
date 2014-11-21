@@ -1,0 +1,5 @@
+suites:
+  sms_suite:
+    namespace: Indigo\Sms
+    psr4_prefix: Indigo\Sms
+formatter.name: pretty

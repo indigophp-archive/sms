@@ -1,0 +1,10 @@
+suites:
+  sms_suite:
+    namespace: Indigo\Sms
+    psr4_prefix: Indigo\Sms
+extensions:
+  - PhpSpec\Extension\CodeCoverageExtension
+formatter.name: pretty
+code_coverage:
+  format: clover
+  output: build/coverage.xml

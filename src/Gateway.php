@@ -9,30 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace Indigo\Sms\Gateway;
-
-use Indigo\Sms\Message;
+namespace Indigo\Sms;
 
 /**
- * Gateway Interface
+ * Gateway interface
  *
  * @author Márk Sági-Kazár <mark.sagikazar@gmail.com>
  */
-interface GatewayInterface
+interface Gateway
 {
     /**
      * Sends a message
      *
      * @param Message $message
      *
-     * @return boolean True on success
+     * @return boolean
      */
     public function send(Message $message);
-
-    /**
-     * Returns the balance
-     *
-     * @return float|null Must return null if not available
-     */
-    public function getBalance();
 }
